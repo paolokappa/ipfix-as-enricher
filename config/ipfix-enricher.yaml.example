@@ -1,4 +1,11 @@
 # IPFIX AS Enricher Configuration
+# 
+# NOTE: This example uses standard ports (2055/2056).
+# Some installations use custom ports like 9996.
+# Adjust according to your network setup.
+
+
+# IPFIX AS Enricher Configuration
 
 general:
   # UDP port to listen for IPFIX/NetFlow packets

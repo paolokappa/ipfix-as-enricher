@@ -1,0 +1,49 @@
+# IPFIX AS Enricher Configuration - Custom Port 9996 Example
+# 
+# This example shows configuration for non-standard port 9996
+# commonly used in some network setups
+
+general:
+  # Custom port for IPFIX/NetFlow reception
+  listen_port: 9996
+  
+  # Forward to same port (or change as needed)
+  output_port: 9996
+  
+  # Statistics interface (keep on standard port)
+  stats_port: 9999
+  
+  # Log level
+  log_level: INFO
+  
+  # Buffer size
+  buffer_size: 65535
+
+enrichment:
+  # Enable AS extraction
+  as_extraction: true
+  
+  # Other enrichments
+  geoip_enabled: false
+  reverse_dns: false
+
+forwarding:
+  # Collectors expecting data on port 9996
+  collectors:
+    - host: 185.54.81.20
+      port: 9996
+    # Add more collectors as needed
+
+performance:
+  # Tuning for high traffic
+  workers: 4
+  queue_size: 10000
+  stats_interval: 60
+
+# NAT configuration (if using ipfix-nat.service)
+nat:
+  # Enable source NAT
+  enabled: true
+  # Source IP for SNAT
+  source_ip: 185.54.80.2
+  source_port: 40000
