@@ -1,0 +1,10 @@
+# Core dependencies
+PyYAML>=6.0
+netaddr>=0.8.0
+
+# Optional dependencies for enhanced features
+# Uncomment as needed:
+# geoip2>=4.6.0        # For GeoIP lookups
+# maxminddb>=2.2.0     # For MaxMind database support
+# dnspython>=2.3.0     # For reverse DNS lookups
+# prometheus-client>=0.16.0  # For Prometheus metrics

@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "=== IPFIX Status ==="
+echo "Service: $(systemctl is-active ipfix-enricher)"
+echo "Process: $(pgrep -c -f ipfix_enricher_final.py) instance(s)"
+echo
+echo "Traffic (last 5s):"
+timeout 5 tcpdump -nn -i any port 9996 2>/dev/null | \
+  awk '/185.54.81.23.9996/{i++} /185.54.81.20.9996/{o++} 
+  END{printf "  IN: %d pkts (%.1f pps)\n  OUT: %d pkts (%.1f pps)\n  Success: %d%%\n", 
+  i, i/5, o, o/5, (i>0?o*100/i:0)}'
+echo
+echo "Latest stats:"
+journalctl -u ipfix-enricher -n 50 | grep "Statistics:" -A5 | tail -6

@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+/var/log/
+
+# Runtime
+*.pid
+*.sock
+
+# Config (keep examples)
+config/*.yaml
+config/*.yml
+!config/*.example
+!config/*.sample
+
+# Backups
+*.bak
+*~
+.*.swp
+.*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# Test
+.pytest_cache/
+.coverage
+htmlcov/

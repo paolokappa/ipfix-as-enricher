@@ -1,0 +1,21 @@
+[Unit]
+Description=IPFIX NAT and Firewall Rules
+After=network.target
+Before=csf.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+# Aggiungi regole all'avvio
+ExecStart=/bin/bash -c 'iptables -A INPUT -p udp -s 185.54.80.2 --dport 9996 -j ACCEPT'
+ExecStart=/bin/bash -c 'iptables -t nat -A POSTROUTING -p udp -s 185.54.81.23 -d 185.54.81.20 --dport 9996 -j SNAT --to-source 185.54.80.2:40000'
+
+# Rimuovi regole allo stop
+ExecStop=/bin/bash -c 'iptables -D INPUT -p udp -s 185.54.80.2 --dport 9996 -j ACCEPT 2>/dev/null || true'
+ExecStop=/bin/bash -c 'iptables -t nat -D POSTROUTING -p udp -s 185.54.81.23 -d 185.54.81.20 --dport 9996 -j SNAT --to-source 185.54.80.2:40000 2>/dev/null || true'
+
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

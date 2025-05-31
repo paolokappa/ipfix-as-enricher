@@ -1,0 +1,51 @@
+# IPFIX AS Enricher Configuration
+
+general:
+  # UDP port to listen for IPFIX/NetFlow packets
+  listen_port: 2055
+  
+  # UDP port to forward enriched packets
+  output_port: 2056
+  
+  # Telnet port for statistics
+  stats_port: 9999
+  
+  # Log level (DEBUG, INFO, WARNING, ERROR)
+  log_level: INFO
+  
+  # Buffer size for UDP packets
+  buffer_size: 65535
+
+enrichment:
+  # Enable AS number extraction
+  as_extraction: true
+  
+  # Enable GeoIP lookup (requires MaxMind database)
+  geoip_enabled: false
+  geoip_database: /usr/share/GeoIP/GeoLite2-City.mmdb
+  
+  # Enable reverse DNS lookup
+  reverse_dns: false
+  
+  # Enable BGP session for AS lookups
+  bgp_enabled: false
+  bgp_router: 192.168.1.1
+  bgp_as: 65000
+
+forwarding:
+  # List of collectors to forward enriched data
+  collectors:
+    - host: 127.0.0.1
+      port: 2056
+    # - host: collector2.example.com
+    #   port: 9996
+
+performance:
+  # Number of worker threads
+  workers: 4
+  
+  # Queue size for packet processing
+  queue_size: 10000
+  
+  # Stats update interval (seconds)
+  stats_interval: 60
