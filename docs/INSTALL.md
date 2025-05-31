@@ -63,3 +63,133 @@ Check that everything is running:
 sudo systemctl status ipfix-enricher
 telnet localhost 9999
 ```
+
+## Post-Installation
+
+### Verify Installation
+
+1. **Check Service Status**
+   ```bash
+   sudo systemctl status ipfix-enricher
+   ```
+
+2. **Test Statistics Interface**
+   ```bash
+   telnet localhost 9999
+   > stats
+   > quit
+   ```
+
+3. **Monitor Initial Packets**
+   ```bash
+   ipfix-monitor
+   ```
+
+### Configure Flow Sources
+
+1. **Cisco Router**
+   ```
+   flow-export version 9
+   flow-export destination 10.0.0.10 2055
+   ```
+
+2. **Juniper Router**
+   ```
+   set forwarding-options sampling instance SAMPLE1 family inet output flow-server 10.0.0.10 port 2055 version-ipfix
+   ```
+
+### Configure Collectors
+
+Update your flow collectors to receive from port 2056 instead of directly from routers.
+
+### Performance Optimization
+
+For high-traffic environments (>50k flows/sec):
+
+1. **Increase System Limits**
+   ```bash
+   # /etc/sysctl.conf
+   net.core.rmem_max = 134217728
+   net.core.rmem_default = 134217728
+   net.core.netdev_max_backlog = 5000
+   ```
+
+2. **CPU Affinity**
+   ```bash
+   # /etc/systemd/system/ipfix-enricher.service.d/override.conf
+   [Service]
+   CPUAffinity=2-7
+   ```
+
+3. **Increase Workers**
+   ```yaml
+   # /etc/ipfix-enricher/config.yaml
+   performance:
+     workers: 8
+     queue_size: 100000
+   ```
+
+## Post-Installation
+
+### Verify Installation
+
+1. **Check Service Status**
+   ```bash
+   sudo systemctl status ipfix-enricher
+   ```
+
+2. **Test Statistics Interface**
+   ```bash
+   telnet localhost 9999
+   > stats
+   > quit
+   ```
+
+3. **Monitor Initial Packets**
+   ```bash
+   ipfix-monitor
+   ```
+
+### Configure Flow Sources
+
+1. **Cisco Router**
+   ```
+   flow-export version 9
+   flow-export destination 10.0.0.10 2055
+   ```
+
+2. **Juniper Router**
+   ```
+   set forwarding-options sampling instance SAMPLE1 family inet output flow-server 10.0.0.10 port 2055 version-ipfix
+   ```
+
+### Configure Collectors
+
+Update your flow collectors to receive from port 2056 instead of directly from routers.
+
+### Performance Optimization
+
+For high-traffic environments (>50k flows/sec):
+
+1. **Increase System Limits**
+   ```bash
+   # /etc/sysctl.conf
+   net.core.rmem_max = 134217728
+   net.core.rmem_default = 134217728
+   net.core.netdev_max_backlog = 5000
+   ```
+
+2. **CPU Affinity**
+   ```bash
+   # /etc/systemd/system/ipfix-enricher.service.d/override.conf
+   [Service]
+   CPUAffinity=2-7
+   ```
+
+3. **Increase Workers**
+   ```yaml
+   # /etc/ipfix-enricher/config.yaml
+   performance:
+     workers: 8
+     queue_size: 100000
+   ```
