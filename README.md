@@ -36,14 +36,14 @@ This project acts as a transparent proxy for IPFIX/NetFlow traffic, sitting betw
 -  Network flow data lacks proper AS identification
 -  Manual AS lookups don't scale
 -  Replacing collectors is expensive
-- ? Real-time analysis is challenging
+-  Real-time analysis is challenging
 
 ### The Solution
-- ? **Intercepts** flow packets transparently
-- ? **Extracts** AS numbers in real-time
-- ? **Enriches** data with AS information
-- ? **Forwards** to existing collectors
-- ? **Monitors** everything live
+-  **Intercepts** flow packets transparently
+-  **Extracts** AS numbers in real-time
+-  **Enriches** data with AS information
+-  **Forwards** to existing collectors
+-  **Monitors** everything live
 
 ## ? Architecture
 
@@ -123,7 +123,7 @@ enrichment:
 |  `ipfix-monitor` | Live packet viewer | `ipfix-monitor` |
 |  `ipfix-stats` | Statistics dashboard | `ipfix-stats` |
 |  `ipfix-tail` | Enhanced log viewer | `ipfix-tail` |
-| ? `ipfix-status` | Health check | `ipfix-status` |
+|  `ipfix-status` | Health check | `ipfix-status` |
 
 ### Example Output
 ```bash
@@ -183,7 +183,7 @@ See [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) for detailed troubleshoot
 -  [Configuration Guide](docs/CONFIGURATION.md)
 -  [Firewall Setup](docs/FIREWALL.md)
 -  [Monitoring Tools](docs/MONITORING_TOOLS.md)
-- ? [Architecture](docs/ARCHITECTURE.md)
+-  [Architecture](docs/ARCHITECTURE.md)
 -  [Troubleshooting](docs/TROUBLESHOOTING.md)
 
 ##  Contributing
@@ -202,7 +202,7 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
 
 <div align="center">
 
-### ? Star this repo if you find it useful!
+###  Star this repo if you find it useful!
 
 [![GitHub stars](https://img.shields.io/github/stars/paolokappa/ipfix-as-enricher.svg?style=social)](https://github.com/paolokappa/ipfix-as-enricher/stargazers)
 [![GitHub watchers](https://img.shields.io/github/watchers/paolokappa/ipfix-as-enricher.svg?style=social)](https://github.com/paolokappa/ipfix-as-enricher/watchers)
