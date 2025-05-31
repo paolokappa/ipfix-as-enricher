@@ -26,22 +26,22 @@ IPFIX AS Enricher:
 
 ```
 +-----------------+                    +------------------+                    +-----------------+
-¦ Network Device  ¦  IPFIX/NetFlow v9  ¦ IPFIX AS Enricher¦   Enriched Flow   ¦ Flow Collector  ¦
-¦ (Router/Switch) ¦ -----------------> ¦   (Port 2055)    ¦ -----------------> ¦  (Port 2056)    ¦
-+-----------------+                    ¦                  ¦                    +-----------------+
-                                       ¦  AS Extraction   ¦
-                                       ¦  Engine          ¦
-                                       ¦                  ¦
-                                       ¦ Statistics API   ¦
-                                       ¦  (Port 9999)     ¦
+Â¦ Network Device  Â¦  IPFIX/NetFlow v9  Â¦ IPFIX AS EnricherÂ¦   Enriched Flow    Â¦ Flow Collector  Â¦
+Â¦ (Router/Switch) Â¦ -----------------> Â¦   (Port 2055)    Â¦ -----------------> Â¦  (Port 2056)    Â¦
++-----------------+                    Â¦                  Â¦                    +-----------------+
+                                       Â¦  AS Extraction   Â¦
+                                       Â¦  Engine          Â¦
+                                       Â¦                  Â¦
+                                       Â¦ Statistics API   Â¦
+                                       Â¦  (Port 9999)     Â¦
                                        +------------------+
-                                                ¦
+                                                Â¦
                                                 v
                                        +------------------+
-                                       ¦ Monitoring Tools ¦
-                                       ¦ - ipfix-monitor  ¦
-                                       ¦ - ipfix-stats    ¦
-                                       ¦ - ipfix-tail     ¦
+                                       Â¦ Monitoring Tools Â¦
+                                       Â¦ - ipfix-monitor  Â¦
+                                       Â¦ - ipfix-stats    Â¦
+                                       Â¦ - ipfix-tail     Â¦
                                        +------------------+
 ```
 
